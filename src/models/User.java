@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+
 public class User {
 
     private String name;
@@ -26,7 +27,6 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-
     public String getName() {
         return name;
     }
@@ -34,7 +34,6 @@ public class User {
     public String getEmail() {
         return email;
     }
-
 
     public String getPassword() {
         return password;

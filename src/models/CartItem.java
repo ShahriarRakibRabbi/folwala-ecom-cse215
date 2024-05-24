@@ -1,6 +1,6 @@
 package models;
-public class CartItem {
 
+public class CartItem {
     private int cartItemID;
     private int product;
     private int quantity;
@@ -43,6 +43,4 @@ public class CartItem {
                 ", quantity=" + quantity +
                 '}';
     }
-
-    
 }
