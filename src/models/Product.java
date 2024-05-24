@@ -1,15 +1,17 @@
 package models;
+
 public class Product {
     private String name;
     private double price;
     private int productID;
     private int stockQuantity;
     private String category;
+    private String unit;
     private boolean isAvailable;
     private boolean isDeleted;
 
-
-    public Product(String name, double price, int productID, int stockQuantity, String category, boolean isAvailable, boolean isDeleted) {
+    public Product(String name, double price, int productID, int stockQuantity, String category, boolean isAvailable,
+            boolean isDeleted) {
         this.name = name;
         this.price = price;
         this.productID = productID;
@@ -42,7 +44,6 @@ public class Product {
     public boolean isAvailable() {
         return isAvailable;
     }
-
 
     public boolean isDeleted() {
         return isDeleted;

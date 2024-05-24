@@ -4,7 +4,7 @@ public class OrderItem {
 
   private int orderItemID;
   private int orderID;
-  private Product product;
+  private int productID;
   private int quantity;
   private double price;
 
