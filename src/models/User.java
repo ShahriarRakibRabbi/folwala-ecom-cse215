@@ -1,7 +1,7 @@
 package models;
 public class User {
 
-    private String userName;
+    private String name;
     private String email;
     private String password;
     private String address;
@@ -9,8 +9,8 @@ public class User {
     private int userID;
     private boolean isAdmin;
 
-    public User(String userName, String email, String password, String address, String phone, int userID, boolean isAdmin) {
-        this.userName = userName;
+    public User(String name, String email, String password, String address, String phone, int userID, boolean isAdmin) {
+        this.name = name;
         this.email = email;
         this.password = password;
         this.address = address;
@@ -20,8 +20,8 @@ public class User {
     }
 
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
@@ -49,8 +49,8 @@ public class User {
         return isAdmin;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name   = name   ;
     }
 
     public void setEmail(String email) {
@@ -80,7 +80,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
+                "name  ='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
