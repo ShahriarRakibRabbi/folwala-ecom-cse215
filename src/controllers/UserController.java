@@ -51,4 +51,18 @@ public class UserController {
     return isAuthenticated;
   }
 
+  public static void logoutUser() {
+    isAuthenticated = false;
+  }
+
+  public static void showOrders() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'showOrders'");
+  }
+
+  public static void showProfile() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'showProfile'");
+  }
+
 }

@@ -11,6 +11,7 @@ public class Menu {
     String[] options = {
         "View Fruits",
         "Search Fruits",
+        "View Cart",
         "My Orders",
         "My Profile",
         "Logout"

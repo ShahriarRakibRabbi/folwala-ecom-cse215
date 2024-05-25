@@ -32,7 +32,7 @@ public class InputHandler {
   }
 
   public static int readChoice(int min, int max) {
-    DisplayManager.print("Choice: ");
+    DisplayManager.print("Option: ");
     String input = scanner.nextLine();
 
     if (input.matches("[0-9]")) {
