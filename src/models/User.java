@@ -2,7 +2,6 @@ package models;
 
 import java.io.FileWriter;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +22,7 @@ public class User {
         this.password = password;
         this.address = address;
         this.phone = phone;
-        this.userID = userID;
+        // this.userID = userID;
         this.isAdmin = false;
     }
 
@@ -159,4 +158,23 @@ public class User {
                 "Phone    : " + phone;
     }
 
+    public static User getUserByEmail(String email2) {
+        try {
+            FileReader fileReader = new FileReader("/data/users.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] user = line.split(" ");
+                if (user[2].equals(email2)) {
+                    User u = new User(user[0], user[2], user[3], user[4], user[5]);
+                    bufferedReader.close();
+                    return u;
+                }
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }
