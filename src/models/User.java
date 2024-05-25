@@ -83,14 +83,15 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public void user() {
+    public void save() {
         String filePath = "/data/users.txt";
 
         try {
-            FileWriter fw = new FileWriter(filePath);
-            BufferedWriter writer = new BufferedWriter(fw);
-            writer.write(name + " " + userID + " " + email + " " + password + " " + address + " " + phone + " ");
-            writer.close();
+            FileWriter fileWriter = new FileWriter(filePath);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter
+                    .write(name + " " + userID + " " + email + " " + password + " " + address + " " + phone + " ");
+            bufferedWriter.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

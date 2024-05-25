@@ -14,11 +14,17 @@ public class Main {
 
         while (running) {
             ConsoleUtils.clearScreen();
-            Menu.showUnauthenticatedMenu();
+
+            DisplayManager.printTitle("Welcome to Folwala");
+            if (UserController.isAuthenticated())
+                Menu.showMainMenu();
+            else
+                Menu.showUnauthenticatedMenu();
+
             int choice = InputHandler.readChoice(1, 3);
             switch (choice) {
                 case 1:
-                    // UserController.loginUser();
+                    UserController.loginUser();
                     break;
                 case 2:
                     UserController.registerUser();

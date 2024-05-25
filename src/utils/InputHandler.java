@@ -31,13 +31,13 @@ public class InputHandler {
     return input;
   }
 
-  public static int readChoice(int i, int j) {
+  public static int readChoice(int min, int max) {
     DisplayManager.print("Choice: ");
     String input = scanner.nextLine();
 
     if (input.matches("[0-9]")) {
       int choice = Integer.parseInt(input);
-      return choice >= i && choice <= j ? choice : -1;
+      return choice >= min && choice <= max ? choice : -1;
     }
     return -1;
   }

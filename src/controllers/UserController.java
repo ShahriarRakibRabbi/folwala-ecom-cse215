@@ -1,7 +1,5 @@
 package controllers;
 
-import java.io.Console;
-
 import models.User;
 import utils.ConsoleUtils;
 import utils.DisplayManager;
@@ -9,9 +7,13 @@ import utils.InputHandler;
 
 public class UserController {
 
+  private static User currentUser;
+  private static boolean isAuthenticated;
+
   public static void registerUser() {
     ConsoleUtils.clearScreen();
     DisplayManager.printTitle("Register");
+
     String name = InputHandler.readString("Name: ");
     String email = InputHandler.readString("Email: ");
     String password = InputHandler.readString("Password: ");
@@ -23,6 +25,14 @@ public class UserController {
 
     DisplayManager.showMessage("User registered successfully!");
     ConsoleUtils.wait(2);
+  }
+
+  public static void loginUser() {
+    isAuthenticated = true;
+  }
+
+  public static boolean isAuthenticated() {
+    return isAuthenticated;
   }
 
 }
