@@ -29,7 +29,7 @@ public class UserController {
     User user = new User(name, phone, password, address);
     user.save();
 
-    DisplayManager.showMessage("User registered successfully!");
+    DisplayManager.showSuccessMessage("User registered successfully!");
     ConsoleUtils.wait(2);
   }
 
@@ -61,7 +61,7 @@ public class UserController {
       System.out.println(e.getMessage());
     }
 
-    DisplayManager.showMessage("Login successful!");
+    DisplayManager.showSuccessMessage("Login successful!");
     ConsoleUtils.wait(2);
   }
 

@@ -12,7 +12,7 @@ public class ProductController {
   public static void showCategories() {
     ConsoleUtils.clearScreen();
     DisplayManager.printTitle("Categories");
-    String[] categories = { "Fleshy Fruits", "Dry Fruits", "Fruit Seeds", "Fruit Juice", "Vegetables" };
+    String[] categories = { "Fleshy Fruits", "Dry Fruits", "Fruit Seeds", "Fruit Juice", "Vegetables", "Go Back" };
     DisplayManager.showMenu(categories);
     int choice = InputHandler.readChoice(categories.length);
 
@@ -32,6 +32,8 @@ public class ProductController {
       case 5:
         showProducts("Vegetables");
         break;
+      case 6:
+        break;
       default:
         DisplayManager.showErrorMessage("Invalid choice. Please try again.");
     }
@@ -45,6 +47,20 @@ public class ProductController {
 
     for (Product product : products) {
       DisplayManager.printProduct(product);
+    }
+
+    String options[] = { "Add to Cart", "Go Back" };
+    DisplayManager.showMenu(options);
+
+    int choice = InputHandler.readChoice(options.length);
+    switch (choice) {
+      case 1:
+        break;
+      case 2:
+        showCategories();
+        break;
+      default:
+        DisplayManager.showErrorMessage("Invalid choice. Please try again.");
     }
 
   }

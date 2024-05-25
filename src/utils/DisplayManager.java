@@ -1,13 +1,14 @@
 package utils;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 import models.Product;
 
 public class DisplayManager {
     public static void showMessage(String message) {
         System.out.println(message);
+    }
+
+    public static void showSuccessMessage(String message) {
+        System.out.println(Color.GREEN + message + Color.RESET);
     }
 
     public static void print(String message) {
@@ -21,20 +22,20 @@ public class DisplayManager {
 
     public static void showMenu(String[] options) {
         for (int i = 0; i < options.length; i++) {
-            System.out.println("\t" + (i + 1) + ". " + options[i]);
+            System.out.println(Color.GREEN + "\t" + (i + 1) + ". " + options[i] + Color.RESET);
         }
         System.out.println();
     }
 
     public static void showErrorMessage(String message) {
-        System.out.println("Error: " + message);
+        System.out.println(Color.RED + "Error: " + message + Color.RESET);
     }
 
     public static void printExitSequence() {
         ConsoleUtils.clearScreen();
         System.out.println("Thank you for shopping with us! :)\n");
         ConsoleUtils.wait(1);
-        System.out.print("Exiting");
+        System.out.print(Color.RED + "Exiting");
         for (int i = 0; i < 3; i++) {
             ConsoleUtils.wait(1);
             System.out.print(".");

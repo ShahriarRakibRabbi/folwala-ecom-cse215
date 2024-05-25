@@ -35,7 +35,7 @@ public class InputHandler {
     DisplayManager.print("Option: ");
     String input = scanner.nextLine();
 
-    if (input.matches("[0-9]")) {
+    if (input.matches("[0-9]+")) {
       int choice = Integer.parseInt(input);
       return choice >= 1 && choice <= totalOptions ? choice : -1;
     }

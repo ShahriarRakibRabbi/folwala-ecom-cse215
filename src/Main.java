@@ -60,6 +60,8 @@ public class Main {
                 "My Profile",
                 "Logout"
         };
+
+        DisplayManager.showMessage("Select an option");
         DisplayManager.showMenu(options);
 
         int choice = InputHandler.readChoice(options.length);
