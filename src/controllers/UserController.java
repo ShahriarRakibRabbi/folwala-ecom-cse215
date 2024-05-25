@@ -8,7 +8,7 @@ import utils.InputHandler;
 public class UserController {
 
   private static User currentUser;
-  private static boolean isAuthenticated;
+  private static boolean isAuthenticated = false;
 
   public static void registerUser() {
     ConsoleUtils.clearScreen();
@@ -35,7 +35,7 @@ public class UserController {
     String password = InputHandler.readString("Password: ");
 
     User user = User.getUserByEmail(email);
-    
+
     if (user == null || !user.getPassword().equals(password)) {
       DisplayManager.showErrorMessage("Invalid email or password. Please try again.");
       ConsoleUtils.wait(2);

@@ -83,7 +83,7 @@ public class User {
     }
 
     public void save() {
-        String filePath = "/data/users.txt";
+        String filePath = "data/users.txt";
 
         try {
             FileWriter fileWriter = new FileWriter(filePath);
@@ -96,33 +96,32 @@ public class User {
         }
     }
 
-    public void login(String email, String password) {
-        String filePath = "/data/users.txt";
+    // public void login(String email, String password) {
+    // String filePath = "data/users.txt";
 
-        try {
-            FileReader fr = new FileReader(filePath);
-            BufferedReader reader = new BufferedReader(fr);
-            String line = reader.readLine();
-            while (line != null) {
-                String[] user = line.split(" ");
-                if (user[2].equals(email) && user[3].equals(password)) {
-                    System.out.println("Login Successful");
-                    break;
-                }
-                line = reader.readLine();
-            }
-            reader.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    // try {
+    // FileReader fileReader = new FileReader(filePath);
+    // BufferedReader bufferedReader = new BufferedReader(fileReader);
+    // String line;
+    // while ((line = bufferedReader.readLine()) != null) {
+    // String[] user = line.split(" ");
+    // if (user[2].equals(email) && user[3].equals(password)) {
+    // System.out.println("Login Successful");
+    // break;
+    // }
+    // }
+    // bufferedReader.close();
+    // } catch (IOException e) {
+    // System.out.println(e.getMessage());
+    // }
+    // }
 
     public void logout() {
         System.out.println("Logout Successful");
     }
 
     public void updateProfile() {
-        String filePath = "/data/users.txt";
+        String filePath = "data/users.txt";
 
         try {
             FileReader fr = new FileReader(filePath);
@@ -158,14 +157,14 @@ public class User {
                 "Phone    : " + phone;
     }
 
-    public static User getUserByEmail(String email2) {
+    public static User getUserByEmail(String email) {
         try {
-            FileReader fileReader = new FileReader("/data/users.txt");
+            FileReader fileReader = new FileReader("data/users.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] user = line.split(" ");
-                if (user[2].equals(email2)) {
+                if (user[2].equals(email)) {
                     User u = new User(user[0], user[2], user[3], user[4], user[5]);
                     bufferedReader.close();
                     return u;
