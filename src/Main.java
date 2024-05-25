@@ -15,16 +15,16 @@ public class Main {
         while (running) {
             ConsoleUtils.clearScreen();
             Menu.showUnauthenticatedMenu();
-            int choice = InputHandler.readInt("Enter your choice: ");
+            int choice = InputHandler.readChoice(1, 3);
             switch (choice) {
                 case 1:
-                    UserController.loginUser();
+                    // UserController.loginUser();
                     break;
                 case 2:
                     UserController.registerUser();
                     break;
                 case 3:
-                    DisplayManager.showMessage("Exiting...");
+                    DisplayManager.printExitSequence();
                     running = false;
                     break;
                 default:

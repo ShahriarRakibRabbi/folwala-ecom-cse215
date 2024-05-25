@@ -83,7 +83,7 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public void register() {
+    public void user() {
         String filePath = "/data/users.txt";
 
         try {

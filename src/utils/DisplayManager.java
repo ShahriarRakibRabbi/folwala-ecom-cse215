@@ -28,4 +28,15 @@ public class DisplayManager {
     public static void showErrorMessage(String message) {
         System.out.println("Error: " + message);
     }
+
+    public static void printExitSequence() {
+        ConsoleUtils.clearScreen();
+        System.out.println("Thank you for shopping with us! :)\n");
+        ConsoleUtils.wait(1);
+        System.out.print("Exiting");
+        for (int i = 0; i < 3; i++) {
+            ConsoleUtils.wait(1);
+            System.out.print(".");
+        }
+    }
 }

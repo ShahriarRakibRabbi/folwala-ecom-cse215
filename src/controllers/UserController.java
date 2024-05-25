@@ -18,8 +18,8 @@ public class UserController {
     String address = InputHandler.readString("Address: ");
     String phone = InputHandler.readString("Phone: ");
 
-    // Save user to database
     User user = new User(name, email, password, address, phone);
+    user.save();
 
     DisplayManager.showMessage("User registered successfully!");
     ConsoleUtils.wait(2);
