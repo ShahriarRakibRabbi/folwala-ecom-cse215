@@ -1,37 +1,21 @@
 package utils;
 
-import java.util.Scanner;
+public class Validator {
 
-public class InputHandler {
-  private Scanner scanner;
-
-  public InputHandler() {
-    scanner = new Scanner(System.in);
-  }
-
-  public String getStringInput(String prompt) {
-    System.out.print(prompt);
-    return scanner.nextLine();
-  }
-
-  public int getIntInput(String prompt) {
-    System.out.print(prompt);
-    while (!scanner.hasNextInt()) {
-      System.out.println("Invalid input. Please enter a number.");
-      scanner.next();
+    public static boolean isValidEmail(String email) {
+        return email.contains("@") && email.contains(".");
     }
-    return scanner.nextInt();
-  }
 
-  public String getValidatedInput(String prompt, Validator validator) {
-    String input;
-    do {
-      System.out.print(prompt);
-      input = scanner.nextLine();
-      if (!validator.isValid(input)) {
-        System.out.println("Invalid input. Please try again.");
-      }
-    } while (!validator.isValid(input));
-    return input;
-  }
+    public static boolean isValidPhoneNumber(String phone) {
+        return phone.matches("\\d{10}");
+    }
+
+    public static boolean isValidPassword(String password) {
+        return password.length() >= 6;
+    }
+
+    public static boolean isValid(String input) {
+        // General validation logic can be added here
+        return input != null && !input.trim().isEmpty();
+    }
 }

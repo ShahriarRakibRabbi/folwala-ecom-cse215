@@ -1,35 +1,31 @@
-javaCopy code
 package utils;
 
 import models.Product;
-import models.Order;
 import java.util.List;
 
 public class DisplayManager {
 
-    public void showMenu(String[] options) {
+    public static void showMessage(String message) {
+        System.out.println(message);
+    }
+
+    public static void print(String message) {
+        System.out.print(message);
+    }
+
+    public static void printTitle(String title) {
+        System.out.println("======= " + title + " =======");
+        System.out.println();
+    }
+
+    public static void showMenu(String[] options) {
         System.out.println("Please select an option:");
         for (int i = 0; i < options.length; i++) {
-            System.out.println((i + 1) + ". " + options[i]);
+            System.out.println("\t" + (i + 1) + ". " + options[i]);
         }
     }
 
-    public void showProductList(List<Product> products) {
-        System.out.println("Available Products:");
-        for (Product product : products) {
-            System.out.println(product.getName() + " - $" + product.getPrice());
-        }
-    }
-
-    public void showOrderDetails(Order order) {
-        System.out.println("Order Details:");
-        System.out.println("Order ID: " + order.getOrderId());
-        System.out.println("Total Amount: $" + order.getTotalAmount());
-        System.out.println("Order Date: " + order.getOrderDate());
-        // Additional details
-    }
-
-    public void showErrorMessage(String message) {
+    public static void showErrorMessage(String message) {
         System.out.println("Error: " + message);
     }
 }

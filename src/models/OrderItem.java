@@ -4,7 +4,7 @@ public class OrderItem {
 
   private int orderItemID;
   private int orderID;
-  private int productID;
+  private Product product;
   private int quantity;
   private double price;
 
@@ -16,7 +16,7 @@ public class OrderItem {
     this.price = price;
   }
 
-  public int calculateItemTotal() {
+  public double calculateItemTotal() {
     return quantity * product.getPrice();
   }
 

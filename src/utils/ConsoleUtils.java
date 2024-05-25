@@ -13,7 +13,24 @@ public class ConsoleUtils {
         System.out.flush();
       }
     } catch (IOException | InterruptedException ex) {
-      ex.printStackTrace();
+      DisplayManager.showErrorMessage("Could not clear the screen.");
     }
   }
+
+  public static void waitForEnter() {
+    try {
+      System.in.read();
+    } catch (IOException ex) {
+      DisplayManager.showErrorMessage("Could not read input.");
+    }
+  }
+
+  public static void wait(int seconds) {
+    try {
+      Thread.sleep(seconds * 1000);
+    } catch (InterruptedException ex) {
+      DisplayManager.showErrorMessage("Thread was interrupted.");
+    }
+  }
+
 }

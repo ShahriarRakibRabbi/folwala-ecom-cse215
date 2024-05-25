@@ -17,14 +17,14 @@ public class User {
     private int userID;
     private boolean isAdmin;
 
-    public User(String name, String email, String password, String address, String phone, int userID, boolean isAdmin) {
+    public User(String name, String email, String password, String address, String phone) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.address = address;
         this.phone = phone;
         this.userID = userID;
-        this.isAdmin = isAdmin;
+        this.isAdmin = false;
     }
 
     public String getName() {
@@ -56,7 +56,7 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name   = name   ;
+        this.name = name;
     }
 
     public void setEmail(String email) {
@@ -85,34 +85,34 @@ public class User {
 
     public void register() {
         String filePath = "/data/users.txt";
-        
-        try{
+
+        try {
             FileWriter fw = new FileWriter(filePath);
             BufferedWriter writer = new BufferedWriter(fw);
-            writer.write(name +" "+ userID +" "+ email +" "+ password +" "+ address +" "+ phone +" ");
+            writer.write(name + " " + userID + " " + email + " " + password + " " + address + " " + phone + " ");
             writer.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void login(String email, String password) {
         String filePath = "/data/users.txt";
-        
-        try{
+
+        try {
             FileReader fr = new FileReader(filePath);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
-            while(line != null){
+            while (line != null) {
                 String[] user = line.split(" ");
-                if(user[2].equals(email) && user[3].equals(password)){
+                if (user[2].equals(email) && user[3].equals(password)) {
                     System.out.println("Login Successful");
                     break;
                 }
                 line = reader.readLine();
             }
             reader.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -123,36 +123,37 @@ public class User {
 
     public void updateProfile() {
         String filePath = "/data/users.txt";
-        
-        try{
+
+        try {
             FileReader fr = new FileReader(filePath);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
-            while(line != null){
+            while (line != null) {
                 String[] user = line.split(" ");
-                if(Integer.parseInt(user[1]) == userID){
+                if (Integer.parseInt(user[1]) == userID) {
                     FileWriter fw = new FileWriter(filePath);
                     BufferedWriter writer = new BufferedWriter(fw);
-                    writer.write(name +" "+ userID +" "+ email +" "+ password +" "+ address +" "+ phone +" ");
+                    writer.write(
+                            name + " " + userID + " " + email + " " + password + " " + address + " " + phone + " ");
                     writer.close();
                     break;
                 }
                 line = reader.readLine();
             }
             reader.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Override
     public String toString() {
-        return  "User :" +
+        return "User :" +
                 "======" +
                 "Name     : " + name +
                 "User ID  : " + userID +
                 "Email ID : " + email +
-                "Password : " + password + 
+                "Password : " + password +
                 "Address  : " + address +
                 "Phone    : " + phone;
     }
