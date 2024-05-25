@@ -19,10 +19,10 @@ public class DisplayManager {
     }
 
     public static void showMenu(String[] options) {
-        System.out.println("Please select an option:");
         for (int i = 0; i < options.length; i++) {
             System.out.println("\t" + (i + 1) + ". " + options[i]);
         }
+        System.out.println();
     }
 
     public static void showErrorMessage(String message) {
