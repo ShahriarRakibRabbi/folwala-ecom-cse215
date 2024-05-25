@@ -1,9 +1,11 @@
 package utils;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import models.Product;
 
 public class DisplayManager {
-
     public static void showMessage(String message) {
         System.out.println(message);
     }
@@ -39,10 +41,11 @@ public class DisplayManager {
         }
     }
 
-    public static void showProduct(Product product) {
-        System.out.println("Name: " + product.getName());
-        System.out.println("Price: " + product.getPrice());
-        System.out.println("Unit: " + product.getUnit());
-        System.out.println();
+    public static void printProduct(Product product) {
+        System.out.println(
+                product.getProductID() + ". " +
+                        product.getName() +
+                        " (" + product.getUnit() + ") - " +
+                        (int) product.getPrice() + " BDT");
     }
 }

@@ -1,9 +1,7 @@
-import java.io.Console;
-
+import controllers.InventoryController;
+import controllers.OrderController;
 import controllers.ProductController;
 import controllers.UserController;
-import models.Product;
-import models.User;
 import utils.ConsoleUtils;
 import utils.DisplayManager;
 import utils.InputHandler;
@@ -18,11 +16,13 @@ public class Main {
         while (running) {
             ConsoleUtils.clearScreen();
 
+            UserController.checkAuthentication();
             if (UserController.isAuthenticated()) {
                 if (UserController.isAdmin()) {
                     showAdminMainMenu();
+                } else {
+                    showMainMenu();
                 }
-                showMainMenu();
                 continue;
             }
 
@@ -30,7 +30,7 @@ public class Main {
 
             String[] options = { "Login", "Register", "Exit" };
             DisplayManager.showMenu(options);
-            int choice = InputHandler.readChoice(1, options.length);
+            int choice = InputHandler.readChoice(options.length);
             switch (choice) {
                 case 1:
                     UserController.loginUser();
@@ -62,7 +62,7 @@ public class Main {
         };
         DisplayManager.showMenu(options);
 
-        int choice = InputHandler.readChoice(1, options.length);
+        int choice = InputHandler.readChoice(options.length);
         switch (choice) {
             case 1:
                 ProductController.showCategories();
@@ -91,9 +91,29 @@ public class Main {
 
         String[] options = {
                 "Orders",
-                "Inventory",
+                "Product List",
+                "Add Product",
                 "Logout"
         };
+        DisplayManager.showMenu(options);
+        int choice = InputHandler.readChoice(options.length);
+        switch (choice) {
+            case 1:
+                OrderController.showOrders();
+                break;
+            case 2:
+                InventoryController.showProducts();
+                break;
+            case 3:
+                InventoryController.addProduct();
+                break;
+            case 4:
+                UserController.logoutUser();
+                break;
+            default:
+                DisplayManager.showErrorMessage("Invalid choice. Please try again.");
+                ConsoleUtils.wait(2);
+        }
         DisplayManager.showMenu(options);
     }
 }

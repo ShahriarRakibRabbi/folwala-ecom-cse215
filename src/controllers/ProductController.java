@@ -14,7 +14,7 @@ public class ProductController {
     DisplayManager.printTitle("Categories");
     String[] categories = { "Fleshy Fruits", "Dry Fruits", "Fruit Seeds", "Fruit Juice", "Vegetables" };
     DisplayManager.showMenu(categories);
-    int choice = InputHandler.readChoice(1, categories.length);
+    int choice = InputHandler.readChoice(categories.length);
 
     switch (choice) {
       case 1:
@@ -44,7 +44,7 @@ public class ProductController {
     ArrayList<Product> products = Product.getProductsByCategory(category);
 
     for (Product product : products) {
-      DisplayManager.showProduct(product);
+      DisplayManager.printProduct(product);
     }
 
   }

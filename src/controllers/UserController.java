@@ -1,5 +1,10 @@
 package controllers;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 import models.Product;
 import models.User;
 import utils.ConsoleUtils;
@@ -42,24 +47,56 @@ public class UserController {
       ConsoleUtils.wait(2);
       return;
     }
-    currentUser = user;
 
-    if (currentUser.isAdmin()) {
-      isAdmin = true;
+    currentUser = user;
+    isAuthenticated = true;
+    isAdmin = currentUser.isAdmin();
+
+    try {
+      FileWriter fileWriter = new FileWriter("data/authenticated.txt");
+      BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+      bufferedWriter.write(phone);
+      bufferedWriter.close();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
 
     DisplayManager.showMessage("Login successful!");
     ConsoleUtils.wait(2);
-    isAuthenticated = true;
   }
 
   public static boolean isAuthenticated() {
     return isAuthenticated;
   }
 
+  public static void checkAuthentication() {
+    try {
+      FileReader fileReader = new FileReader("data/authenticated.txt");
+      BufferedReader bufferedReader = new BufferedReader(fileReader);
+      String line = bufferedReader.readLine();
+      if (line != null) {
+        isAuthenticated = true;
+        currentUser = User.getUserByPhone(line);
+        isAdmin = currentUser.isAdmin();
+      }
+      bufferedReader.close();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public static void logoutUser() {
+    try {
+      FileWriter fileWriter = new FileWriter("data/authenticated.txt");
+      BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+      bufferedWriter.write("");
+      bufferedWriter.close();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
     currentUser = null;
     isAuthenticated = false;
+    isAdmin = false;
   }
 
   public static void showOrders() {
