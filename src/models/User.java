@@ -86,10 +86,11 @@ public class User {
         String filePath = "data/users.txt";
 
         try {
-            FileWriter fileWriter = new FileWriter(filePath);
+            FileWriter fileWriter = new FileWriter(filePath, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter
-                    .write(name + " " + userID + " " + email + " " + password + " " + address + " " + phone + " ");
+                    .write(name + " " + userID + " " + email + " " + password + " " + address + " " + phone);
+            bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());

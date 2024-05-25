@@ -1,7 +1,6 @@
 package utils;
 
 import models.Product;
-import java.util.List;
 
 public class DisplayManager {
 
@@ -38,5 +37,12 @@ public class DisplayManager {
             ConsoleUtils.wait(1);
             System.out.print(".");
         }
+    }
+
+    public static void showProduct(Product product) {
+        System.out.println("Name: " + product.getName());
+        System.out.println("Price: " + product.getPrice());
+        System.out.println("Unit: " + product.getUnit());
+        System.out.println();
     }
 }

@@ -47,14 +47,14 @@ public class Main {
     }
 
     private static void mainMenu() {
-        DisplayManager.printTitle("Welcome {User Name}");
+        DisplayManager.printTitle("Welcome " + UserController.getCurrentUser().getName() + " to Folwala");
 
         Menu.showMainMenu();
 
         int choice = InputHandler.readChoice(1, 5);
         switch (choice) {
             case 1:
-                ProductController.showProducts();
+                ProductController.showCategories();
                 break;
             case 2:
                 ProductController.showCart();

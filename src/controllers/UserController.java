@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Product;
 import models.User;
 import utils.ConsoleUtils;
 import utils.DisplayManager;
@@ -63,6 +64,10 @@ public class UserController {
   public static void showProfile() {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'showProfile'");
+  }
+
+  public static User getCurrentUser() {
+    return currentUser;
   }
 
 }

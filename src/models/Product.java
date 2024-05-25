@@ -1,5 +1,12 @@
 package models;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Product {
     private String name;
     private double price;
@@ -10,13 +17,15 @@ public class Product {
     private boolean isAvailable;
     private boolean isDeleted;
 
-    public Product(String name, double price, int productID, int stockQuantity, String category, boolean isAvailable,
+    public Product(String name, double price, int productID, int stockQuantity, String category, String unit,
+            boolean isAvailable,
             boolean isDeleted) {
         this.name = name;
         this.price = price;
         this.productID = productID;
         this.stockQuantity = stockQuantity;
         this.category = category;
+        this.unit = unit;
         this.isAvailable = isAvailable;
         this.isDeleted = isDeleted;
     }
@@ -39,6 +48,10 @@ public class Product {
 
     public String getCategory() {
         return category;
+    }
+
+    public String getUnit() {
+        return unit;
     }
 
     public boolean isAvailable() {
@@ -92,6 +105,31 @@ public class Product {
 
     public void updateStock(int quantity) {
         this.stockQuantity += quantity;
+    }
+
+    public static ArrayList<Product> getProductsByCategory(String category) {
+        String filePath = "data/products.txt";
+        ArrayList<Product> products = new ArrayList<>();
+
+        try {
+            FileReader fileReader = new FileReader(filePath);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(" ");
+                if (data[4].equals(category)) {
+                    Product product = new Product(data[0], Double.parseDouble(data[1]), Integer.parseInt(data[2]),
+                            Integer.parseInt(data[3]), data[4], data[5], Boolean.parseBoolean(data[6]),
+                            Boolean.parseBoolean(data[7]));
+                    products.add(product);
+                }
+            }
+            bufferedReader.close();
+            return products;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
 }
