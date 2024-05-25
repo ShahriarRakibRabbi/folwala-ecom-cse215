@@ -10,18 +10,18 @@ public class UserController {
 
   private static User currentUser;
   private static boolean isAuthenticated = false;
+  private static boolean isAdmin = false;
 
   public static void registerUser() {
     ConsoleUtils.clearScreen();
     DisplayManager.printTitle("Register");
 
     String name = InputHandler.readString("Name: ");
-    String email = InputHandler.readString("Email: ");
+    String phone = InputHandler.readString("Phone: ");
     String password = InputHandler.readString("Password: ");
     String address = InputHandler.readString("Address: ");
-    String phone = InputHandler.readString("Phone: ");
 
-    User user = new User(name, email, password, address, phone);
+    User user = new User(name, phone, password, address);
     user.save();
 
     DisplayManager.showMessage("User registered successfully!");
@@ -32,17 +32,22 @@ public class UserController {
     ConsoleUtils.clearScreen();
     DisplayManager.printTitle("Login");
 
-    String email = InputHandler.readString("Email: ");
+    String phone = InputHandler.readString("Phone: ");
     String password = InputHandler.readString("Password: ");
 
-    User user = User.getUserByEmail(email);
+    User user = User.getUserByPhone(phone);
 
     if (user == null || !user.getPassword().equals(password)) {
-      DisplayManager.showErrorMessage("Invalid email or password. Please try again.");
+      DisplayManager.showErrorMessage("Invalid phone or password. Please try again.");
       ConsoleUtils.wait(2);
       return;
     }
     currentUser = user;
+
+    if (currentUser.isAdmin()) {
+      isAdmin = true;
+    }
+
     DisplayManager.showMessage("Login successful!");
     ConsoleUtils.wait(2);
     isAuthenticated = true;
@@ -53,21 +58,22 @@ public class UserController {
   }
 
   public static void logoutUser() {
+    currentUser = null;
     isAuthenticated = false;
   }
 
   public static void showOrders() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'showOrders'");
   }
 
   public static void showProfile() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'showProfile'");
   }
 
   public static User getCurrentUser() {
     return currentUser;
+  }
+
+  public static boolean isAdmin() {
+    return isAdmin;
   }
 
 }

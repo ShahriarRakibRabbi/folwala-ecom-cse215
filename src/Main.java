@@ -7,7 +7,6 @@ import models.User;
 import utils.ConsoleUtils;
 import utils.DisplayManager;
 import utils.InputHandler;
-import utils.Menu;
 
 public class Main {
 
@@ -20,14 +19,18 @@ public class Main {
             ConsoleUtils.clearScreen();
 
             if (UserController.isAuthenticated()) {
-                mainMenu();
+                if (UserController.isAdmin()) {
+                    showAdminMainMenu();
+                }
+                showMainMenu();
                 continue;
             }
 
             DisplayManager.printTitle("Welcome to Folwala");
 
-            Menu.showUnauthenticatedMenu();
-            int choice = InputHandler.readChoice(1, 3);
+            String[] options = { "Login", "Register", "Exit" };
+            DisplayManager.showMenu(options);
+            int choice = InputHandler.readChoice(1, options.length);
             switch (choice) {
                 case 1:
                     UserController.loginUser();
@@ -46,12 +49,20 @@ public class Main {
         }
     }
 
-    private static void mainMenu() {
+    private static void showMainMenu() {
         DisplayManager.printTitle("Welcome " + UserController.getCurrentUser().getName() + " to Folwala");
 
-        Menu.showMainMenu();
+        String[] options = {
+                "View Fruits",
+                "Search Fruits",
+                "View Cart",
+                "My Orders",
+                "My Profile",
+                "Logout"
+        };
+        DisplayManager.showMenu(options);
 
-        int choice = InputHandler.readChoice(1, 5);
+        int choice = InputHandler.readChoice(1, options.length);
         switch (choice) {
             case 1:
                 ProductController.showCategories();
@@ -65,7 +76,6 @@ public class Main {
                 UserController.showOrders();
                 break;
             case 5:
-
                 break;
             case 6:
                 UserController.logoutUser();
@@ -74,5 +84,16 @@ public class Main {
                 DisplayManager.showErrorMessage("Invalid choice. Please try again.");
                 ConsoleUtils.wait(2);
         }
+    }
+
+    private static void showAdminMainMenu() {
+        DisplayManager.printTitle("Welcome " + UserController.getCurrentUser().getName());
+
+        String[] options = {
+                "Orders",
+                "Inventory",
+                "Logout"
+        };
+        DisplayManager.showMenu(options);
     }
 }
