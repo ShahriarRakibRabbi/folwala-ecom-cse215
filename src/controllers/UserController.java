@@ -28,6 +28,22 @@ public class UserController {
   }
 
   public static void loginUser() {
+    ConsoleUtils.clearScreen();
+    DisplayManager.printTitle("Login");
+
+    String email = InputHandler.readString("Email: ");
+    String password = InputHandler.readString("Password: ");
+
+    User user = User.getUserByEmail(email);
+    
+    if (user == null || !user.getPassword().equals(password)) {
+      DisplayManager.showErrorMessage("Invalid email or password. Please try again.");
+      ConsoleUtils.wait(2);
+      return;
+    }
+    currentUser = user;
+    DisplayManager.showMessage("Login successful!");
+    ConsoleUtils.wait(2);
     isAuthenticated = true;
   }
 
