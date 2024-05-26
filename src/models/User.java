@@ -82,32 +82,6 @@ public class User {
         System.out.println("Logout Successful");
     }
 
-    // public void updateProfile() {
-    // String filePath = "data/users.txt";
-
-    // try {
-    // FileReader fr = new FileReader(filePath);
-    // BufferedReader reader = new BufferedReader(fr);
-    // String line = reader.readLine();
-    // while (line != null) {
-    // String[] user = line.split(" ");
-    // if (Integer.parseInt(user[1]) == userID) {
-    // FileWriter fw = new FileWriter(filePath);
-    // BufferedWriter writer = new BufferedWriter(fw);
-    // writer.write(
-    // name + " " + userID + " " + email + " " + password + " " + address + " " +
-    // phone + " ");
-    // writer.close();
-    // break;
-    // }
-    // line = reader.readLine();
-    // }
-    // reader.close();
-    // } catch (IOException e) {
-    // System.out.println(e.getMessage());
-    // }
-    // }
-
     @Override
     public String toString() {
         return "User :" +

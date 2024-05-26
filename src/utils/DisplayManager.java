@@ -11,6 +11,10 @@ public class DisplayManager {
         System.out.println(Color.GREEN + message + Color.RESET);
     }
 
+    public static void newLine() {
+        System.out.println();
+    }
+
     public static void print(String message) {
         System.out.print(message);
     }

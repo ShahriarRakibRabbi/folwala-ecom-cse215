@@ -49,20 +49,21 @@ public class ProductController {
       DisplayManager.printProduct(product);
     }
 
+    DisplayManager.newLine();
+
     String options[] = { "Add to Cart", "Go Back" };
     DisplayManager.showMenu(options);
 
     int choice = InputHandler.readChoice(options.length);
     switch (choice) {
       case 1:
+        CartController.addToCart();
         break;
       case 2:
-        showCategories();
         break;
       default:
         DisplayManager.showErrorMessage("Invalid choice. Please try again.");
     }
-
   }
 
   public static void showCart() {
